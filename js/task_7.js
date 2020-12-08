@@ -1,22 +1,20 @@
 const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 
 const isLoginValid = function (login) {
-  const result = login.length >= 4 && login.length <= 16;
-  return result;
+  return login.length >= 4 && login.length <= 16;
 };
 
 const isLoginUnique = function (allLogins, login) {
-  const result = allLogins.includes(login);
-  return result;
+  return allLogins.includes(login);
 };
 
 const addLogin = function (allLogins, login) {
-  if (isLoginValid(login) === true && isLoginUnique(allLogins, login) === false) {
+  if (!!isLoginValid(login) && !isLoginUnique(allLogins, login)) {
     allLogins.push(login);
     return 'Логин успешно добавлен!';
-  } else if (isLoginUnique(allLogins, login) === true) {
+  } else if (!!isLoginUnique(allLogins, login)) {
     return 'Такой логин уже используется!'; 
-  } else if (isLoginValid(login) === false) {
+  } else if (!isLoginValid(login)) {
     return 'Ошибка! Логин должен быть от 4 до 16 символов';
   }    
 };
